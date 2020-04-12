@@ -49,13 +49,13 @@ async function zebra (input?: any, key?: string, col?: number, type?: 'eng' | 'b
         return initial;
         }, {});
         let value = ordering(Object.values(jsonData)[0], key, col, type);
-        let value2 = {...value};
+        // let value2 = [...value];
         let worksheet = XLSX.utils.json_to_sheet(value);
         let workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, 'dictionary')
         const bf = XLSX.write(workbook, {bookType:'xlsx', type:'buffer'})
         fs.writeFileSync(path, bf);
-        return returnJSON? value2: undefined;
+        return returnJSON? value: undefined;
     } catch (error) {
         throw error;
     }
