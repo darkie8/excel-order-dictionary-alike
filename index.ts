@@ -2,7 +2,7 @@ import * as XLSX from 'xlsx';
 import Axios from 'axios';
 import * as fs from 'fs';
 function ordering (Z: any[], key: string, col: number, type?: 'eng' | 'bng') {
-    const A1 = type === 'bng' ?'অ আ ই ঈ উ ঊ ঋ এ ঐ ও ঔ ক খ গ ঘ ঙ চ ছ জ ঝ ঞ ট ঠ ড ঢ ণ ত থ দ ধ ন প ফ ব ভ ম য র ল শ ষ স হ ড় ঢ় য় ৎ ং ঃ ঁ '
+    const A1 = !type || type === 'bng' ?'অ আ ই ঈ উ ঊ ঋ এ ঐ ও ঔ ক খ গ ঘ ঙ চ ছ জ ঝ ঞ ট ঠ ড ঢ ণ ত থ দ ধ ন প ফ ব ভ ম য র ল শ ষ স হ ড় ঢ় য় ৎ ং ঃ ঁ '
     : 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z';
     const B1 = 'া ি ী ু ূ ৃ ে ৈ ো ৌ';
     let A2 = A1.split(' ');
@@ -10,7 +10,7 @@ function ordering (Z: any[], key: string, col: number, type?: 'eng' | 'bng') {
     let Z2: any[];
     let m ='', n = '';
     
-    let keyNames = Object.keys(Z.find(el => el.length === col));
+    let keyNames = Object.keys(Z.find(el => Object.keys(el).length === col));
     Z2 = !type || type === 'bng' ? Z.map((el: { [x: string]: string; pos: any; }) => (el.pos = (el[key] ? el[key].replace(' ', '')
     : ' ঁৎ').replace(RegExp('্', 'ig'), '').replace(/[.!@#$%^&*\[\]\(\)\/_+-=）（\→]/g, '').split('')
     .map((el1: string, i: number, arr: string[]) => 
@@ -37,11 +37,11 @@ function ordering (Z: any[], key: string, col: number, type?: 'eng' | 'bng') {
     return Z2.map(el => (delete el.pos, el));
     
 }
-async function zebra ({ xlsbuffer, url, key, col, type, path }: { xlsbuffer?: Buffer; url?: string; key: string; col: number; type?: 'eng' | 'bng', path: string }) {
+async function zebra (input?: any, key?: string, col?: number, type?: 'eng' | 'bng', path?: string) {
     try {
         let hello : any;
-        hello = !Buffer.isBuffer(xlsbuffer) ? await Axios.get(url, {responseType: 'arraybuffer'}) : xlsbuffer;
-        const buffer = !Buffer.isBuffer(xlsbuffer) ? Buffer.from(hello.data) : xlsbuffer;
+        hello = !Buffer.isBuffer(input) ? await Axios.get(input, {responseType: 'arraybuffer'}) : input;
+        const buffer = !Buffer.isBuffer(input) ? Buffer.from(hello.data) : input;
         const workBook = XLSX.read(buffer, { type: 'buffer' });
         const jsonData = workBook.SheetNames.reduce((initial: { [x: string]: unknown[]; }, name: string | number) => {
         const sheet = workBook.Sheets[name];
@@ -58,6 +58,5 @@ async function zebra ({ xlsbuffer, url, key, col, type, path }: { xlsbuffer?: Bu
         return error;
     }
 }
-
 export const orderJSON = ordering;
 export default zebra;

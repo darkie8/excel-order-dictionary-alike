@@ -4,7 +4,6 @@
   "description": "order a certain colomn of an excel file with dictionary like sorting and republish it. Available for Bengali and English",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc index.ts && gulp minify-js"
   },
   "keywords": [
