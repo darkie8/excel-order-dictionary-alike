@@ -6,17 +6,23 @@ A small library that orders a certain colomn of an excel file with dictionary li
 
 ## Installation
 
-  `npm install @darkie8/excel-order-dictionary-alike`
+  `npm install bengali-excel-order-dictionary`
 
 ## Usage
 
-    var excel-order = require('@darkie8/excel-order-dictionary-alike');
-    // import * as excel-order from '@darkie8/excel-order-dictionary-alike'
+    var excel-order = require('bengali-excel-order-dictionary');
 
-    zebra('https://url',
-    "key", 5, 'bng', 'dictionary.xlsx').then(
+    // import excel-order from 'bengali-excel-order-dictionary'
+
+    // use 'bng' for bengali alphabets and 'eng' for English Alphabets
+    // the last param true returns formatted JSON, false return void
+
+    excel-order('https://url',
+    "key", 5, 'bng', 'dictionary.xlsx', true).then(
+
     el => console.log(el)
-     ).catch(e => console.error(e))
+
+    ).catch(e => console.error(e))
   
   Output should be an excel file with formatted column
 
