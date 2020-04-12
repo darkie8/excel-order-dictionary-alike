@@ -6,6 +6,10 @@
   "scripts": {
     "build": "tsc index.ts && gulp minify-js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darkie8/excel-order-dictionary-alike.git"
+  },
   "keywords": [
     "bengali",
     "English",
@@ -27,6 +31,7 @@
     "typescript": "^3.8.3",
     "uglify-es": "^3.3.9"
   },
+  "readme": "./README.md",
   "typings": "./index.d.ts",
   "author": "darkie8",
   "license": "GNU GPLv3"
