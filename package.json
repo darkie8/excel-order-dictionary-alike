@@ -30,5 +30,5 @@
   },
   "typings": "./index.d.ts",
   "author": "darkie8",
-  "license": "MIT"
+  "license": "GNU GPLv3"
 }
