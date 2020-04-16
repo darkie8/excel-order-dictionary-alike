@@ -1,6 +1,6 @@
 {
-  "name": "bengali-excel-order-dictionary",
-  "version": "1.0.8",
+  "name": "@darkie8/excel-order-dictionary-alike",
+  "version": "1.0.2",
   "description": "order a certain colomn of an excel file with dictionary like sorting and republish it. Available for Bengali and English",
   "main": "index.js",
   "scripts": {

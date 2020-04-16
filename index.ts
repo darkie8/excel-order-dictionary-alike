@@ -37,7 +37,7 @@ function ordering (Z: any[], key: string, col: number, type?: 'eng' | 'bng') {
     return Z2.map(el => (delete el.pos, el));
     
 }
-async function zebra (input?: any, key?: string, col?: number, type?: 'eng' | 'bng', path?: string, returnJSON?: boolean) : Promise<any[] | undefined> {
+async function giraffe (input?: any, key?: string, col?: number, type?: 'eng' | 'bng', path?: string, returnJSON?: boolean) : Promise<any[] | undefined> {
     try {
         let hello : any;
         hello = !Buffer.isBuffer(input) ? await Axios.get(input, {responseType: 'arraybuffer'}) : input;
@@ -61,4 +61,5 @@ async function zebra (input?: any, key?: string, col?: number, type?: 'eng' | 'b
     }
 }
 export const orderJSON = ordering;
+export const zebra = giraffe;
 export default zebra;
