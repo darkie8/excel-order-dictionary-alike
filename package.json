@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@types/node": "^13.11.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "xlsx": "^0.15.6"
   },
   "devDependencies": {
