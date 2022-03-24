@@ -22,7 +22,7 @@
   "dependencies": {
     "@types/node": "^13.11.1",
     "axios": "^0.21.1",
-    "xlsx": "^0.15.6"
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
